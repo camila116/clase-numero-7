@@ -1,0 +1,92 @@
+:root {
+  font-family: Arial, sans-serif;
+  color: #243047;
+  background: #eef2ff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 40px 16px;
+}
+
+.contenedor {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 28px;
+  border-radius: 16px;
+  background: white;
+  box-shadow: 0 8px 24px #2430471a;
+}
+
+h1 {
+  margin-top: 0;
+  color: #3859d8;
+}
+
+label {
+  display: block;
+  margin: 14px 0 6px;
+  font-weight: bold;
+}
+
+input {
+  width: 100%;
+  padding: 11px;
+  border: 1px solid #cbd2e1;
+  border-radius: 8px;
+}
+
+button {
+  margin-top: 16px;
+  padding: 10px 14px;
+  border: 0;
+  border-radius: 8px;
+  background: #3859d8;
+  color: white;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #2946b8;
+}
+
+#mensaje {
+  min-height: 20px;
+  color: #218354;
+}
+
+ul {
+  padding: 0;
+  list-style: none;
+}
+
+.producto {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 10px;
+  padding: 12px;
+  border: 1px solid #e1e5ef;
+  border-radius: 8px;
+}
+
+.boton-eliminar {
+  flex-shrink: 0;
+  margin: 0;
+  background: #c4434b;
+}
+
+.boton-eliminar:hover {
+  background: #a83239;
+}
+
+@media (max-width: 480px) {
+  .contenedor {
+    padding: 20px;
+  }
+}
