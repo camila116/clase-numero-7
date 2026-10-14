@@ -1,0 +1,56 @@
+const productos = [
+  { id: 1, nombre: "Teclado mecánico", precio: 45000 },
+  { id: 2, nombre: "Mouse inalámbrico", precio: 22000 },
+  { id: 3, nombre: 'Monitor 24"', precio: 180000 }
+];
+
+const formulario = document.querySelector("#formulario-producto");
+const lista = document.querySelector("#lista-productos");
+const mensaje = document.querySelector("#mensaje");
+const nombreInput = document.querySelector("#nombre");
+const precioInput = document.querySelector("#precio");
+let siguienteId = 4;
+
+function mostrarProductos() {
+  lista.innerHTML = "";
+
+  productos.forEach((producto) => {
+    lista.innerHTML += `
+      <li class="producto">
+        <span>${producto.nombre} — $${producto.precio.toLocaleString("es-AR")}</span>
+        <button class="boton-eliminar" data-id="${producto.id}">Eliminar</button>
+      </li>
+    `;
+  });
+}
+
+formulario.addEventListener("submit", (evento) => {
+  evento.preventDefault();
+
+  const nombre = nombreInput.value.trim();
+  const precio = Number(precioInput.value);
+
+  if (nombre === "" || precio <= 0) {
+    mensaje.textContent = "Completá el nombre y escribí un precio mayor que cero.";
+    return;
+  }
+
+  productos.push({ id: siguienteId, nombre: nombre, precio: precio });
+  siguienteId++;
+  formulario.reset();
+  mostrarProductos();
+  mensaje.textContent = "¡Producto agregado!";
+});
+
+lista.addEventListener("click", (evento) => {
+  if (evento.target.classList.contains("boton-eliminar")) {
+    const id = Number(evento.target.dataset.id);
+    const indice = productos.findIndex((producto) => producto.id === id);
+
+    productos.splice(indice, 1);
+    mostrarProductos();
+    mensaje.textContent = "Producto eliminado.";
+  }
+});
+
+mostrarProductos();
